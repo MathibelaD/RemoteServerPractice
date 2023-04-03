@@ -6,6 +6,7 @@ const fetchData = async (url) => {
     req.open("GET", url); // open channel
     req.send(); // send request
     const resp = await req.response;
+    console.log(resp)
     console.log(req);
     return resp;
   } catch (error) {
@@ -15,7 +16,7 @@ const fetchData = async (url) => {
 };
 
 fetchData(url)
-  .then((data) => {
-    console.log(data);
-  })
-  .catch((error) => console.log(error));
+//   .then((data) => {
+//     console.log(data);
+//   })
+//   .catch((error) => console.log(error));

@@ -1,39 +1,48 @@
 const url = "http://localhost:4377/";
+const getData = document.getElementById("lessons")
 
-// const fetchData = async (url) => {
-//   const req = new XMLHttpRequest();
-//   try {
-//     req.open("GET", url); // open channel
-//     req.send(); // send request
-//     const resp = await req.response;
-//     return resp;
-//   } catch (error) {
-//     console.log(error);
-//     return error;
-//   }
-// };
-
-function load(url, callback) {
-  const xhr = new XMLHttpRequest();
-
-  xhr.onreadystatechange = () => {
-    if (xhr.readyState === 4) {
-      callback(xhr.response);
-      console.log(xhr.response);
-    }
-  }
-
-  xhr.open('GET', url, true);
-  xhr.send();
+const manipulate = (test) => {
+  return getData.innerText = test
 }
 
-load(url, () => {})
-// await fetchData(url)
-//   .then((data) => {
-//     console.log(data);
-//   })
-//   .catch((error) => console.log(error));
-//========================================
- let lesson_data = document.getElementById("lessons")
+const fetchData = async () => {
+  const req = new XMLHttpRequest();
+  req.open("GET", "http://localhost:4377/");
 
-//  lesson_data.innerText = fetchData(url)
+  try {
+    req.send();
+    req.responseType = 'json';
+    req.onreadystatechange = () => {
+    if(req.readyState === 4){
+      console.log(req.response)
+      let data = req.response
+      // manipulate("data hehehehe")
+    }else {
+      console.log("Loading", req.readyState)
+    }
+  }
+  } catch (error) {
+    return error
+  }
+
+};
+
+fetchData()
+// function load(url, callback) {
+//   const xhr = new XMLHttpRequest();
+
+//   xhr.onreadystatechange = () => {
+//     if (xhr.readyState === 4) {
+//       return callback(JSON.parse(xhr.response));
+//       //  console.log(JSON.parse(xhr.response));
+//     }
+//   }
+//   xhr.open('GET', url, true);
+//   xhr.send({message: "a ke sure"});
+// }
+
+// console.log(load(url, () => {}))
+
+//  let lesson_data = document.getElementById("lessons")
+
+// //  lesson_data.innerText = load(url, () => {})

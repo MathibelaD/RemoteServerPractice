@@ -16,6 +16,13 @@ const fetchData = async () => {
     if(req.readyState === 4){
       console.log(req.response)
       let data = req.response
+      // data.lessons.map(() => {
+
+      // })
+      Object.values(data.lessons).map((e) => {
+        console.log(e)
+        document.getElementById("para").innerText = e.description
+      })
       document.getElementById("lessons").innerText = req.response
       return data
     }

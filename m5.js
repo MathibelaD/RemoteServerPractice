@@ -1,5 +1,5 @@
 const url = "http://localhost:4377/";
-// const getData = document.getElementById("lessons")
+const getData = document.getElementById("lessons")
 
 // const manipulate = (test) => {
 //   return getData = test
@@ -11,19 +11,18 @@ const fetchData = async () => {
 
   try {
     req.send();
-    req.responseType = 'json';
-    req.onreadystatechange = () => {
-    if(req.readyState === 4){
+    req.responseType = 'json'; // assign response type to json
+    req.onreadystatechange = () => { 
+    if(req.readyState === 4){ // readyState 4 is done/request finished/response is ready
       console.log(req.response)
       let data = req.response
-      // data.lessons.map(() => {
-
-      // })
       Object.values(data.lessons).map((e) => {
-        console.log(e)
-        document.getElementById("para").innerText = e.description
+        getData.appendChild(
+        Object.assign(document.createElement("p"),{
+          innerText: e.id + " " + e.topic + " " +  e.description 
+        }))
       })
-      document.getElementById("lessons").innerText = req.response
+     
       return data
     }
   }

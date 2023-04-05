@@ -32,4 +32,23 @@ const fetchData = async () => {
 
 };
 
+// create circular svg image  with red background and purple boder. add  text to the image 'I am SVG' centered.
+const svgholder = document.getElementById("imageX")
+// const svg = document.createElement('svg')
+// svgholder.appendChild(
+//   Object.assign(document.createElement('svg'),{
+//     height : "100",
+//     width: "100"
+//   }))
+const svg1 = document.createElementNS("http://www.w3.org/2000/svg",'svg')
+svg1.setAttribute('width', '100')
+svg1.setAttribute('height', '100')  
+  
+const circle1 = document.createElementNS("http://www.w3.org/2000/svg",'circle')
+circle1.setAttribute("cx",50)
+circle1.setAttribute("cy",50)
+circle1.setAttribute("r",40)
+// circle1.setAttribute("style",20)
+svg1.appendChild(circle1)
+document.body.appendChild(svg1)
 fetchData()

@@ -47,16 +47,32 @@ const svgholder = document.getElementById("imageX")
 //     })
 //   )
 
+// CREATE SVG ELEMENT
 const svg1 = document.createElementNS("http://www.w3.org/2000/svg",'svg')
 svg1.setAttribute('width', '100')
 svg1.setAttribute('height', '100')  
-  
+
+//CREATE CIRCLE ELEMENT
 const circle1 = document.createElementNS("http://www.w3.org/2000/svg",'circle')
 circle1.setAttribute("cx",50)
 circle1.setAttribute("cy",50)
 circle1.setAttribute("r",40)
 circle1.setAttribute('style', 'fill: red; stroke: purple; stroke-width: 4px;')
-// circle1.setAttribute("stroke",red)
 svg1.appendChild(circle1)
+
+
+// CREATE TEXT ELEMENT
+var textNode = document.createTextNode("I am SVG");
+const text1 = document.createElementNS("http://www.w3.org/2000/svg",'text')
+text1.setAttribute('x', 50)
+text1.setAttribute('y', 50)
+// text1.setAttribute('value', "i am")
+text1.setAttribute('style', 'text-anchor: middle; text-color: Black; stroke-width: 2px;')
+text1.appendChild(textNode)
+
+
+
 svgholder.appendChild(svg1)
 fetchData()
+
+// x="50%" y="50%" text-anchor="middle" stroke="#51c5cf" stroke-width="2px" dy=".3em"

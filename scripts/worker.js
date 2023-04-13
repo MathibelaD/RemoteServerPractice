@@ -3,14 +3,18 @@ onmessage = event => {
     const workerData = event.data;
   
     // Process the worker data
-    const processedData = doSomethingWithWorkerData(workerData);
+    const processedData = letsProcessData(workerData);
   
     // Send the processed data back to the main thread
     postMessage(processedData);
   };
   
-  function doSomethingWithWorkerData(data) {
-    // Perform some processing on the data
-    return data;
+  function letsProcessData(data) {
+   for (let i = 0; i < data.length; i++) {
+    let populations = data[i].population
+    let pop = populations.sort()
+        console.log(pop)
+    }
+    return populations;
   }
   

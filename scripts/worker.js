@@ -4,17 +4,19 @@ onmessage = event => {
   
     // Process the worker data
     const processedData = letsProcessData(workerData);
-  
     // Send the processed data back to the main thread
     postMessage(processedData);
   };
-  
+
   function letsProcessData(data) {
-   for (let i = 0; i < data.length; i++) {
-    let populations = data[i].population
-    let pop = populations.sort()
-        console.log(pop)
-    }
-    return populations;
+
+    let newData = []
+    let MaxPopulation = data.reduce ((max, popu) => max.population > popu.population ? max : popu)
+    let MinPopulation = data.reduce((min, popu) => min.population < popu.population ? min : popu)
+    let medianPopulation = data[Math.round((data.length - 1) / 2)]
+
+
+    newData.unshift(MaxPopulation, medianPopulation, MinPopulation)
+    return newData
   }
   

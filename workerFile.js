@@ -1,5 +1,4 @@
 // Retrieve the JSON data from the file
-const workerDisplay = document.getElementById("worker");
 fetch('data.json')
   .then(response => response.json())
   .then(workerData => {
@@ -12,9 +11,7 @@ fetch('data.json')
     // Receive the processed data from the web worker
     worker.onmessage = event => {
       const letsProcessData = event.data;
-      console.log(letsProcessData)
-      workerDisplay.appendChild(
-        document.body.innerHTML = letsProcessData[0].country + ' ' + letsProcessData[0].population
-      )
+      // console.log(letsProcessData)
+      localStorage.setItem("data", JSON.stringify(letsProcessData))
     };
   });

@@ -16,7 +16,13 @@ onmessage = event => {
     let medianPopulation = data[Math.round((data.length - 1) / 2)]
 
 
-    newData.unshift(MaxPopulation, medianPopulation, MinPopulation)
+    newData.unshift({mostPopulates: MaxPopulation},
+      {leastPopulated: MinPopulation},{medianPopulates: medianPopulation})
     return newData
   }
   
+  // {
+  //   mostPopulates: {countryname: '', population: '', percentage: 0},
+  //   leastPopulated: {countryname: '', population: '', percentage: 0},
+  //   medianPopulates: {countryname: '', population: '', percentage: 0}
+  //   }

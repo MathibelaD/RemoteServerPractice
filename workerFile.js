@@ -1,4 +1,5 @@
 // Retrieve the JSON data from the file
+const toBackend = []
 fetch('data.json')
   .then(response => response.json())
   .then(workerData => {
@@ -12,6 +13,9 @@ fetch('data.json')
     worker.onmessage = event => {
       const letsProcessData = event.data;
       // console.log(letsProcessData)
+      toBackend = letsProcessData
       localStorage.setItem("data", JSON.stringify(letsProcessData))
     };
-  });
+});
+
+  // console.log("here" , toBackend)

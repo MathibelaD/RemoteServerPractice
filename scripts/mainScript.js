@@ -7,7 +7,7 @@ const fetchData = async () => {
       req.responseType = 'json'; // assign response type to json
       req.onreadystatechange = () => { 
       if(req.readyState === 4){ // readyState 4 is done/request finished/response is ready
-        console.log(req.response)
+        // console.log(req.response)
         const data = JSON.stringify(req.response)
         return data
       }
@@ -22,9 +22,15 @@ fetchData()
 //===================================================================
 // console.log(localStorage.getItem('data'))
 
-const topCountries = localStorage.getItem('data')
+const topCountries = JSON.parse(localStorage.getItem('data'))
+var xValues = [];
 
-var xValues = ["Italy", "France", "Spain", "USA", "Argentina"];
+
+xValues.push(topCountries[0].mostPopulates.country)
+xValues.push(topCountries[1].leastPopulated.country)
+xValues.push(topCountries[2].medianPopulates.country)
+
+// var xValues = ["Italy", "France", "Spain", "USA", "Argentina"];
 var yValues = [55, 49, 44, 24, 15];
 var barColors = ["red", "green","blue","orange","brown"];
 

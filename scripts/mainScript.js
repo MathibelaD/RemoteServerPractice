@@ -21,28 +21,24 @@ const fetchData = async () => {
 fetchData()
 //===================================================================
 // console.log(localStorage.getItem('data'))
-
-const topCountries = JSON.parse(localStorage.getItem('data'))
+const canvas = document.getElementById('details')
+const topCountries = JSON.parse(localStorage.getItem('Population'))
 var xValues = [];
-var yValues = [17,12,1];
-
+var yValues = []
 
 xValues.push(topCountries[0].mostPopulates.country)
 xValues.push(topCountries[1].leastPopulated.country)
 xValues.push(topCountries[2].medianPopulates.country)
 
-// yValues.push(topCountries[0].mostPopulates.population)
-// console.log(topCountries[0].mostPopulates.population)
-// yValues.push(topCountries[1].leastPopulated.population)
-// console.log(topCountries[1].leastPopulated.population)
-// yValues.push(topCountries[2].medianPopulates.population)
-// console.log(topCountries[2].medianPopulates.population)
+yValues.push(topCountries[0].MaxPerc)
+yValues.push(topCountries[1].MinPerc)
+yValues.push(topCountries[2].MidPerc)
 
 
-var barColors = ["red", "green","blue"];
+var barColors = ["yellow", "green","blue"];
 
 new Chart("myChart", {
-  type: "bar",
+  type: "doughnut",
   data: {
     labels: xValues,
     datasets: [{
@@ -54,9 +50,21 @@ new Chart("myChart", {
     legend: {display: false},
     title: {
       display: true,
-      text: "Top 3 Countries Population"
+      text: "Countries Population"
     }
   }
 });
 
+Object.values(xValues).map((e,i) => {
+canvas.appendChild(
+  Object.assign(document.createElement('p'), {
+    innerText: ` ${e} has population of`
+  })
+)
+})
 
+  //         getData.appendChild(
+  //         Object.assign(document.createElement("p"),{
+  //           innerText: e.id + " " + e.topic + " " +  e.description 
+  //         }))
+  //       })

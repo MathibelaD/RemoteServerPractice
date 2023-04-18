@@ -12,10 +12,8 @@ fetch('data.json')
     // Receive the processed data from the web worker
     worker.onmessage = event => {
       const letsProcessData = event.data;
-      // console.log(letsProcessData)
-      toBackend = letsProcessData
-      localStorage.setItem("data", JSON.stringify(letsProcessData))
+      localStorage.setItem("Population", JSON.stringify(letsProcessData))
     };
 });
 
-  // console.log("here" , toBackend)
+// fetchData()

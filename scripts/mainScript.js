@@ -24,15 +24,22 @@ fetchData()
 
 const topCountries = JSON.parse(localStorage.getItem('data'))
 var xValues = [];
+var yValues = [17,12,1];
 
 
 xValues.push(topCountries[0].mostPopulates.country)
 xValues.push(topCountries[1].leastPopulated.country)
 xValues.push(topCountries[2].medianPopulates.country)
 
-// var xValues = ["Italy", "France", "Spain", "USA", "Argentina"];
-var yValues = [55, 49, 44, 24, 15];
-var barColors = ["red", "green","blue","orange","brown"];
+// yValues.push(topCountries[0].mostPopulates.population)
+// console.log(topCountries[0].mostPopulates.population)
+// yValues.push(topCountries[1].leastPopulated.population)
+// console.log(topCountries[1].leastPopulated.population)
+// yValues.push(topCountries[2].medianPopulates.population)
+// console.log(topCountries[2].medianPopulates.population)
+
+
+var barColors = ["red", "green","blue"];
 
 new Chart("myChart", {
   type: "bar",

@@ -20,7 +20,30 @@ const fetchData = async () => {
 
 fetchData()
 //===================================================================
-console.log(localStorage.getItem('data'))
+// console.log(localStorage.getItem('data'))
 
+const topCountries = localStorage.getItem('data')
+
+var xValues = ["Italy", "France", "Spain", "USA", "Argentina"];
+var yValues = [55, 49, 44, 24, 15];
+var barColors = ["red", "green","blue","orange","brown"];
+
+new Chart("myChart", {
+  type: "bar",
+  data: {
+    labels: xValues,
+    datasets: [{
+      backgroundColor: barColors,
+      data: yValues
+    }]
+  },
+  options: {
+    legend: {display: false},
+    title: {
+      display: true,
+      text: "Top 3 Countries Population"
+    }
+  }
+});
 
 
